@@ -1,8 +1,19 @@
 server:
-  port: 9001
+  port: ${PORT:9001}
 
 spring:
   application:
     name: shipping-service
   config:
     import: "optional:configserver:"
+
+
+
+eureka:
+  instance:
+    hostname: serviceorders.herokuapp.com
+    homePageUrl: https://${eureka.instance.hostName}/
+    home-page-url-path: https://${eureka.instance.hostName}
+  client:
+    serviceUrl:
+      defaultZone: http://servicediscorvery.herokuapp.com/eureka
