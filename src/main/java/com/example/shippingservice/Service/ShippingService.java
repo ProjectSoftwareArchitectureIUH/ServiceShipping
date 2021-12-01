@@ -26,4 +26,29 @@ public class ShippingService {
     public List<Shipping> getAll(){
         return shippingRepository.findAll();
     }
+
+
+    public void deleteById(Long id) {
+        try {
+            shippingRepository.deleteById(id);
+            System.out.println("Delete OK !");
+        }catch (Exception e){
+            System.out.println("Delete Fail Check Again !");
+        }
+    }
+
+
+    public Shipping updateShippingById(Long id, Shipping shipping) {
+        Shipping shippingData = shippingRepository.findById(id).get();
+
+        shippingData.setShippingCompany(shipping.getShippingCompany());
+        shippingData.setRegion(shipping.getRegion());
+        shippingData.setDeliveryCost(shipping.getDeliveryCost());
+
+        return shippingRepository.save(shippingData);
+    }
+
+
+
+
 }

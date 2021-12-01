@@ -29,4 +29,17 @@ public class ShippingController {
     public Shipping getById(@RequestBody Shipping shipping){
         return shippingService.save(shipping);
     }
+
+    @DeleteMapping("/{id}")
+    void deleteEmployee(@PathVariable Long id) {
+        shippingService.deleteById(id);
+    }
+
+    @PutMapping("/{id}")
+    public Shipping updateShippingById(@PathVariable("id") Long id,@RequestBody Shipping shipping){
+
+        return shippingService.updateShippingById(id, shipping);
+    }
+
+
 }
