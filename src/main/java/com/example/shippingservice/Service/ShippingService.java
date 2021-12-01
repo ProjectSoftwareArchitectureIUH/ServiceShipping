@@ -3,6 +3,7 @@ package com.example.shippingservice.Service;
 import com.example.shippingservice.Entity.Shipping;
 import com.example.shippingservice.Repository.ShippingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -23,6 +24,8 @@ public class ShippingService {
     public Shipping getById(long id){
         return shippingRepository.findById(id).get();
     }
+
+    @Cacheable("getAll")
     public List<Shipping> getAll(){
         return shippingRepository.findAll();
     }
